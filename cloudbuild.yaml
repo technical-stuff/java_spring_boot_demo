@@ -1,9 +1,4 @@
 steps:
-  # Step 1: Fetch the Git branch name
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', '--single-branch', '--branch', '$_BRANCH_NAME', 'https://github.com/technical-stuff/java_spring_boot_demo.git', '.']
-    id: 'clone-repo'
-
   - name: 'gcr.io/cloud-builders/git'
     args: ['rev-parse', '--abbrev-ref', 'HEAD']
     id: 'get-branch-name'
