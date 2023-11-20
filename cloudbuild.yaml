@@ -1,4 +1,8 @@
 steps:
+  steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['install']
+  
   # Step 1: Build the Java application
   - name: 'gcr.io/cloud-builders/gradle'
     args: ['clean', 'build']
