@@ -1,8 +1,4 @@
 steps:
-  # Step 1: Build the Java application
-  - name: 'gcr.io/cloud-builders/gradle'
-    args: ['clean', 'build']
-
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: [
