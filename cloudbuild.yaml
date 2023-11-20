@@ -4,7 +4,7 @@ steps:
     args:
       - 'clone'
       - 'https://github.com/technical-stuff/java_spring_boot_demo.git'
-      - '/workspace'
+      - '/test'
 
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install']
@@ -13,11 +13,11 @@ steps:
   #  args: 
   #    - 'clean'
   #    - 'install'
-  #    - '/workspace'
+  #    - '/test'
     # Step 2: Run Maven clean install
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['clean', 'install']
-    dir: '/workspace'
+    dir: '/test'
 
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
@@ -25,7 +25,7 @@ steps:
       - 'build'
       - '-t'
       - 'us-east1-docker.pkg.dev/eastern-dream-404606/testing/2ndfile:$SHORT_SHA'
-      - '/workspace'
+      - '/test'
 
   # Step 3: Push the Docker image to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
