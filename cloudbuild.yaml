@@ -8,9 +8,11 @@ steps:
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install']
   
-  # Step 1: Build the Java application
   - name: 'gcr.io/cloud-builders/gradle'
-    args: ['clean', 'compile']
+    args: 
+      - 'clean'
+      - 'compile'
+      - '/workspace'
 
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
