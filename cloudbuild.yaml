@@ -1,11 +1,8 @@
 steps:
-  - name: 'gcr.io/cloud-builders/mvn'
-  args: ['install']
-  
   # Step 1: Build the Java application
   - name: 'gcr.io/cloud-builders/gradle'
-    args: ['mvn', 'clean', 'compile']
-    
+    args: ['clean', 'build']
+
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: [
@@ -23,14 +20,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-east1-docker.pkg.dev/eastern-dream-404606/testing/2ndfile:${SHORT_SHA}']
 
-  # Step 4: # Store images in Google Artifact Registry 
+   # Step 4: # Store images in Google Artifact Registry 
 images:
   - us-east1-docker.pkg.dev/eastern-dream-404606/testing/2ndfile:${SHORT_SHA}
   - us-east1-docker.pkg.dev/eastern-dream-404606/testing/2ndfile:$BRANCH_NAME
-
-substitutions:
-  _BRANCH_NAME: 'your-default-branch'
-  
-options:
-  logging: CLOUD_LOGGING_ONLY
-
