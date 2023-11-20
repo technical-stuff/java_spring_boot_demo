@@ -16,8 +16,12 @@ steps:
   #    - '/test'
     # Step 2: Run Maven clean install
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['clean', 'install']
-    dir: '/test'
+    args:
+      - '-f'
+      - '/test/java_spring_boot_demo/pom.xml'  # Adjust the path to your pom.xml file
+      - 'clean'
+      - 'install'
+    dir: '/workspace'
 
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
