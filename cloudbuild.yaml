@@ -1,4 +1,10 @@
 steps:
+  - name: 'gcr.io/cloud-builders/git'
+    args:
+      - 'clone'
+      - 'https://github.com/technical-stuff/java_spring_boot_demo.git'
+      - '/workspace'
+      
   - name: 'gcr.io/cloud-builders/mvn'
     args: ['install']
   
