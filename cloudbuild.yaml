@@ -24,3 +24,10 @@ steps:
 images:
   - us-east1-docker.pkg.dev/eastern-dream-404606/testing/2ndfile:${SHORT_SHA}
   - us-east1-docker.pkg.dev/eastern-dream-404606/testing/2ndfile:$BRANCH_NAME
+
+substitutions:
+  _BRANCH_NAME: 'your-default-branch'
+  
+options:
+  logging: CLOUD_LOGGING_ONLY
+
